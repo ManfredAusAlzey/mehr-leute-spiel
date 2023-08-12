@@ -1,8 +1,6 @@
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
     if (controller.player1.isPressed(ControllerButton.B)) {
         info.player2.changeLifeBy(-1)
-    } else if (controller.player2.isPressed(ControllerButton.B)) {
-        info.player1.changeLifeBy(-1)
     }
 })
 scene.setBackgroundColor(0)
@@ -167,4 +165,9 @@ mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), sprites.create(img`
     `, SpriteKind.Player))
 mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.Two), 70, 70)
 info.player1.setLife(3)
-info.player2.setLife(3)
+forever(function () {
+    if (info.player1.life() == 0) {
+        game.showLongText("Spieler2 hat gewonnen!!!", DialogLayout.Full)
+        game.reset()
+    }
+})
