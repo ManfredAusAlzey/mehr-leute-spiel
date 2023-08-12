@@ -1,3 +1,10 @@
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
+    if (controller.player1.isPressed(ControllerButton.B)) {
+        info.player2.changeLifeBy(-1)
+    } else if (controller.player2.isPressed(ControllerButton.B)) {
+        info.player1.changeLifeBy(-1)
+    }
+})
 scene.setBackgroundColor(0)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -139,7 +146,7 @@ mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player))
-mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.One))
+mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.One), 70, 70)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 8 8 f f f . . . . 
@@ -158,42 +165,6 @@ mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player))
-mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.Two))
-mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Three), sprites.create(img`
-    . . . . . . f f f f . . . . . . 
-    . . . . f f f 4 4 f f f . . . . 
-    . . . f f f 4 4 4 4 f f f . . . 
-    . . f f f e e e e e e f f f . . 
-    . . f f e 4 4 4 4 4 4 e e f . . 
-    . . f e 4 f f f f f f 4 e f . . 
-    . . f f f f e e e e f f f f . . 
-    . f f e f e e 4 4 e e f e f f . 
-    . f e e 4 1 f d d f 1 4 e e f . 
-    . . f e e d d d d d d e e f . . 
-    . . . f e e 4 4 4 4 e e f . . . 
-    . . e 4 f 4 4 4 4 4 4 f 4 e . . 
-    . . 4 d f 4 4 4 4 4 4 f d 4 . . 
-    . . 4 d f 2 2 5 5 2 2 f 4 4 . . 
-    . . . . . f f f f f f . . . . . 
-    . . . . . f f . . f f . . . . . 
-    `, SpriteKind.Player))
-mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.Three))
-mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Four), sprites.create(img`
-    . . . . . . f f f f . . . . . . 
-    . . . . f f f 7 7 f f f . . . . 
-    . . . f f f 7 7 7 7 f f f . . . 
-    . . f f f e e e e e e f f f . . 
-    . . f e e 7 7 7 7 7 7 e e f . . 
-    . . f e 7 f f f f f f 7 e f . . 
-    . . f f f f e e e e f f f f . . 
-    . f f e f e e 7 7 e e f e f f . 
-    . f e e 7 1 f d d f 1 7 e e f . 
-    . . f e e d d d d d d e e f . . 
-    . . . f e e 7 7 7 7 e e f . . . 
-    . . e 7 f 7 7 7 7 7 7 f 7 e . . 
-    . . 7 d f 7 7 7 7 7 7 f d 7 . . 
-    . . 7 7 f 2 2 5 5 2 2 f 7 7 . . 
-    . . . . . f f f f f f . . . . . 
-    . . . . . f f . . f f . . . . . 
-    `, SpriteKind.Player))
-mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.Four), 70, 70)
+mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.Two), 70, 70)
+info.player1.setLife(3)
+info.player2.setLife(3)
