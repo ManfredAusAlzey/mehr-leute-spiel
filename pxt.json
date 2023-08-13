@@ -4,7 +4,8 @@
     "dependencies": {
         "device": "*",
         "multiplayer": "*",
-        "pxt-circuit-playground-character-icons": "github:adafruit/circuit-playground-character-icons#v0.0.8"
+        "pxt-circuit-playground-character-icons": "github:adafruit/circuit-playground-character-icons#v0.0.8",
+        "Color Fading": "github:jwunderl/pxt-color#v0.2.2"
     },
     "files": [
         "main.blocks",

@@ -1,4 +1,4 @@
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (controller.player1.isPressed(ControllerButton.B)) {
         info.player2.changeLifeBy(-1)
     }
@@ -128,19 +128,19 @@ scene.setBackgroundImage(img`
     `)
 mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), sprites.create(img`
     . . . . . . f f f f . . . . . . 
-    . . . . f f f 2 2 f f f . . . . 
-    . . . f f f 2 2 2 2 f f f . . . 
+    . . . . f f f 7 7 f f f . . . . 
+    . . . f f f 7 7 7 7 f f f . . . 
     . . f f f e e e e e e f f f . . 
-    . . f f e 2 2 2 2 2 2 e e f . . 
-    . . f e 2 f f f f f f 2 e f . . 
+    . . f f e 7 7 7 7 7 7 e e f . . 
+    . . f e 7 f f f f f f 7 e f . . 
     . . f f f f e e e e f f f f . . 
-    . f f e f b f 4 4 f b f e f f . 
-    . f e e 4 1 f d d f 1 4 e e f . 
+    . f f e f b f 7 7 f b f e f f . 
+    . f e e 7 1 f d d f 1 7 e e f . 
     . . f e e d d d d d d e e f . . 
-    . . . f e e 4 4 4 4 e e f . . . 
-    . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-    . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-    . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
+    . . . f e e 7 7 7 7 e e f . . . 
+    . . e 7 f 7 7 7 7 7 7 f 7 e . . 
+    . . 7 d f 7 7 7 7 7 7 f d 7 . . 
+    . . 7 7 f e e 5 5 e e f 7 7 . . 
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player))
@@ -162,12 +162,13 @@ mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.Two), sprites.create(img`
     . . 6 6 f 6 6 5 5 6 6 f 6 6 . . 
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
-    `, SpriteKind.Player))
+    `, SpriteKind.Enemy))
 mp.moveWithButtons(mp.playerSelector(mp.PlayerNumber.Two), 70, 70)
-info.player1.setLife(3)
+info.player2.setLife(1)
+game.splash("der Fänger muss 3 Sekunden Freilauf geben!")
 forever(function () {
-    if (info.player1.life() == 0) {
-        game.showLongText("Spieler2 hat gewonnen!!!", DialogLayout.Full)
+    if (info.player2.life() == 0) {
+        game.showLongText("Der Fänger hat gewonnen!!!", DialogLayout.Full)
         game.reset()
     }
 })
